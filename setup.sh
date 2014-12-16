@@ -13,7 +13,7 @@ gem install bundler
 gem install nokogiri -v '1.6.5'
 git clone https://github.com/ricardobaumann/redmine
 cd redmine
-bundle install
+bundle install --path vendor/cache
 rake db:migrate
 rails s &
 
