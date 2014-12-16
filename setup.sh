@@ -11,7 +11,7 @@ rvm use 1.9.3
 gem install rake
 gem install bundler
 gem install nokogiri -v '1.6.5'
-gem install rails
+gem install rails -v '3.2.19'
 git clone https://github.com/ricardobaumann/redmine
 cd redmine
 bundle install --path vendor/cache
