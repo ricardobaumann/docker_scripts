@@ -7,7 +7,6 @@ RUN chmod 777 *.sh
 RUN cat setup.sh
 RUN cat run.sh
 RUN ./setup.sh
-CMD ["./run.sh"]
 EXPOSE 3000
 
 
