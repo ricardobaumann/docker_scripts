@@ -14,7 +14,6 @@ gem install bundler
 git clone https://github.com/ricardobaumann/inventory_on_rails
 cd inventory_on_rails
 bundle install --path vendor/cache
-
 rake db:migrate
 #export rvmsudo_secure_path=1
 #rvmsudo rake generate_secret_token
