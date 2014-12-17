@@ -16,5 +16,6 @@ git clone https://github.com/ricardobaumann/inventory_on_rails
 cd inventory_on_rails
 bundle install --path vendor/cache
 rake db:migrate
+rvmsudo rake generate_secret_token
 rails s &
 
