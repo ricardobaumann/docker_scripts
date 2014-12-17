@@ -12,8 +12,8 @@ gem install rake
 gem install bundler
 gem install nokogiri -v '1.6.5'
 gem install rails -v '3.2.19'
-git clone https://github.com/ricardobaumann/redmine
-cd redmine
+git clone https://github.com/ricardobaumann/inventory_on_rails
+cd inventory_on_rails
 bundle install --path vendor/cache
 rake db:migrate
 rails s &
