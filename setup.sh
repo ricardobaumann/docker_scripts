@@ -9,6 +9,7 @@ source /usr/local/rvm/scripts/rvm
 rvm install 1.9.3
 gem install rake
 gem install bundler
+gem install rails
 #gem install nokogiri -v '1.6.5'
 #gem install rails -v '3.2.19'
 git clone https://github.com/ricardobaumann/inventory_on_rails
@@ -17,5 +18,5 @@ bundle install --path vendor/cache
 rake db:migrate
 #export rvmsudo_secure_path=1
 #rvmsudo rake generate_secret_token
-#rails s &
+rails s
 

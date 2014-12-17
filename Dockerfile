@@ -7,6 +7,8 @@ RUN chmod 777 *.sh
 RUN cat setup.sh
 RUN cat run.sh
 RUN ./setup.sh
+RUN cd /inventory_on_rails
+CMD ["rails"] ["s"] ["-DBACKGROUND"]
 EXPOSE 3000
 
 
