@@ -11,6 +11,7 @@ gem install rake
 gem install bundler
 gem install rails
 
+
 #gem install nokogiri -v '1.6.5'
 #gem install rails -v '3.2.19'
 git clone https://github.com/ricardobaumann/inventory_on_rails
