@@ -1,14 +1,21 @@
-FROM ubuntu:14.04
-MAINTAINER Ricardo Baumann <ricardo.luis.baumann@gmail.com>
-ADD https://raw.githubusercontent.com/ricardobaumann/docker_scripts/master/setup.sh setup.sh
-ADD https://raw.githubusercontent.com/ricardobaumann/docker_scripts/master/run.sh run.sh
-RUN ls
-RUN chmod 777 *.sh
-RUN cat setup.sh
-RUN cat run.sh
-RUN ./setup.sh
-EXPOSE 3000
-CMD ["./run.sh"]
+FROM ubuntu:14.10
 
+RUN apt-get update -q
+RUN apt-get install -qy curl
+RUN apt-get install -qy git
 
+RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
+RUN curl -sSL https://get.rvm.io | bash -s stable
+RUN /bin/bash -c -l 'rvm requirements'
+RUN /bin/bash -c -l 'rvm install 1.9.3-p448'
+RUN /bin/bash -c -l 'rvm use 1.9.3-p448'
+RUN /bin/bash -c -l 'gem install bundler --no-ri --no-rdoc'
 
+RUN /bin/bash -c -l 'bundle config path "$HOME/bundler"'
+
+RUN git clone https://github.com/ricardobaumann/inventory_on_rails
+WORKDIR inventory_on_rails
+RUN /bin/bash -c -l 'bundle install'
+
+EXPOSE 80
+CMD /bin/bash -c -l 'ruby script/rails server -p 80'
