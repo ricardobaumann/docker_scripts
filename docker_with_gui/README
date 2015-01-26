@@ -1,0 +1,6 @@
+docker build -t firefox . it and run the container with:
+
+docker run -ti --rm \
+       -e DISPLAY=$DISPLAY \
+       -v /tmp/.X11-unix:/tmp/.X11-unix \
+       firefox
