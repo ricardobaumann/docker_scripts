@@ -14,10 +14,10 @@ RUN /bin/bash -c -l 'gem install rails --no-ri --no-rdoc'
 
 RUN /bin/bash -c -l 'bundle config path "$HOME/bundler"'
 
-RUN git clone https://github.com/ricardobaumann/inventory_on_rails
-WORKDIR inventory_on_rails
+RUN git clone https://github.com/ricardobaumann/sales_on_rails
+WORKDIR sales_on_rails
 RUN /bin/bash -c -l 'bundle install'
 RUN /bin/bash -c -l 'rake db:migrate'
 
 EXPOSE 80
-CMD /bin/bash -c -l 'source /etc/profile.d/rvm.sh && rails server -p 80'
+CMD /bin/bash -c -l 'source /etc/profile.d/rvm.sh && bundle install && git pull origin master && HOME=/redmine rails server -p 80'

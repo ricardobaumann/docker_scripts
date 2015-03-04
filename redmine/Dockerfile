@@ -1,6 +1,6 @@
 FROM ubuntu
 
-RUN apt-get update -q
+RUN apt-get update -q --fix-missing
 RUN apt-get install -qy curl
 RUN apt-get install -qy git
 RUN apt-get install -qy imagemagick --fix-missing
@@ -8,8 +8,8 @@ RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 RUN curl -sSL https://get.rvm.io | bash -s stable
 RUN /bin/bash -c -l 'source /etc/profile.d/rvm.sh'
 RUN /bin/bash -c -l 'rvm requirements'
-RUN /bin/bash -c -l 'rvm install 1.9.3-p448'
-RUN /bin/bash -c -l 'rvm use 1.9.3-p448'
+RUN /bin/bash -c -l 'rvm install 1.9.3'
+RUN /bin/bash -c -l 'rvm use 1.9.3'
 RUN /bin/bash -c -l 'gem install bundler --no-ri --no-rdoc'
 RUN /bin/bash -c -l 'gem install rails --no-ri --no-rdoc'
 RUN /bin/bash -c -l  'gem install rake'
@@ -50,13 +50,15 @@ RUN /bin/bash -c -l  'gem install rack-openid -v 1.4.2'
 RUN /bin/bash -c -l  'gem install rails -v 3.2.19'
 RUN /bin/bash -c -l  'gem install redcarpet -v 2.3.0'
 RUN /bin/bash -c -l  'gem install request_store -v 1.0.5'
-RUN /bin/bash -c -l  'gem install rubyzip -v 1.1.6'
+RUN /bin/bash -c -l  'gem install rubyzip -v 1.1.7'
 RUN /bin/bash -c -l  'gem install websocket -v 1.2.1'
-RUN /bin/bash -c -l  'gem install selenium-webdriver -v 2.44.0'
+RUN /bin/bash -c -l  'gem install selenium-webdriver -v 2.45.0'
 RUN /bin/bash -c -l  'gem install shoulda-context -v 1.0.2'
 RUN /bin/bash -c -l  'gem install shoulda-matchers -v 1.4.1'
 RUN /bin/bash -c -l  'gem install shoulda -v 3.3.2'
 RUN /bin/bash -c -l  'gem install sqlite3 -v 1.3.10'
 RUN /bin/bash -c -l  'gem install yard -v 0.8.7.6'
+RUN /bin/bash -c -l  'gem install tzinfo -v 0.3.43'
+RUN /bin/bash -c -l  'gem install mysql2 -v 0.3.18'
 EXPOSE 80
-CMD /bin/bash -c -l 'source /etc/profile.d/rvm.sh && bundle install && git pull origin master && HOME=/redmine rails server -p 80'
+CMD /bin/bash -c -l 'source /etc/profile.d/rvm.sh && rvm use 1.9.3 && bundle install && git pull origin master && HOME=/redmine rails server -p 80'
