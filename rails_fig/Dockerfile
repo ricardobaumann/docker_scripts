@@ -1,4 +1,4 @@
-FROM ruby:2.2.0
+FROM ruby:1.9.3
 
 RUN apt-get update -qq && apt-get install -y build-essential
 
@@ -19,6 +19,7 @@ RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 
 ADD teste .
+RUN ls
 
 RUN bundle install
 
