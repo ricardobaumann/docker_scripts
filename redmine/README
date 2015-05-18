@@ -1,0 +1,3 @@
+#steps:
+ruby -w run_cluster.rb 2 #pega os ips e joga no proximo
+ruby run_proxy.rb 172.17.0.115 172.17.0.116
