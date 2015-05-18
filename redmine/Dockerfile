@@ -16,15 +16,10 @@ RUN /bin/bash -c -l  'gem install rake'
 RUN apt-get install -qy pkg-config
 RUN apt-get install -qy libmysqlclient-dev
 RUN apt-get install -qy libmagickwand-dev
-RUN /bin/bash -c -l "gem install mysql2 -v '0.3.17'"
-RUN /bin/bash -c -l "gem install railties -v '3.2.19'"
-RUN /bin/bash -c -l  "gem install rmagick"
-RUN /bin/bash -c -l  "gem install mime-types -v 1.25.1"
-RUN /bin/bash -c -l  "gem install polyglot -v 0.3.5"
 RUN /bin/bash -c -l 'bundle config path "$HOME/bundler"'
 RUN git clone https://github.com/ricardobaumann/redmine
 WORKDIR redmine
-RUN /bin/bash -c -l 'bundle install'
+RUN /bin/bash -c -l 'bundle install --path vendor/cache'
 RUN /bin/bash -c -l 'rake db:migrate'
 EXPOSE 3000
-CMD /bin/bash -c -l 'source /etc/profile.d/rvm.sh && rvm use 1.9.3 && git pull origin master && bundle install --path vendor/cache && HOME=/redmine rails s'
+CMD /bin/bash -c -l 'source /etc/profile.d/rvm.sh && rvm use 1.9.3 && git pull origin master && bundle install --path vendor/cache && rake db:migrate && HOME=/redmine rails s'
