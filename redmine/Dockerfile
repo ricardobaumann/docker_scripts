@@ -22,4 +22,4 @@ WORKDIR redmine
 RUN /bin/bash -c -l 'bundle install --path vendor/cache'
 RUN /bin/bash -c -l 'rake db:migrate'
 EXPOSE 3000
-CMD /bin/bash -c -l 'source /etc/profile.d/rvm.sh && rvm use 1.9.3 && git pull origin master && bundle install --path vendor/cache && rake db:migrate && HOME=/redmine rails s'
+CMD /bin/bash -c -l 'source /etc/profile.d/rvm.sh && rvm use 1.9.3 && git pull origin master && HOME=/redmine bundle update && HOME=/redmine bundle install --path vendor/cache && HOME=/redmine rake db:migrate && HOME=/redmine rails s'
